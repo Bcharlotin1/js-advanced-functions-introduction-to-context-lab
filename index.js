@@ -48,21 +48,33 @@ return employeeObject
 }
 
 function hoursWorkedOnDate(employeeObject, dateStamp) {
-    
-    let timeInObject = employeeObject.timeInEvents.filter((array)=>{array.map((object)=> console.log(object))
+    let timeInHour;
+    let timeOutHour;
+
+    let timeInObject = employeeObject.timeInEvents.filter((object)=>{
+        if (object.date === dateStamp){
+            timeInHour = parseInt(object.hour)  
+        }
     })
-       
-        // if (object.date === dateStamp){   
-        //     return object.hour
-        // }
-  
 
-console.log(timeInObject)
-//    let timeOutHour = employeeObject.timeInEvents.filter((object)=>{
-//        if (object.date === dateStamp){
-           
-//         return object.hour
-//        }
-//     })
+    let timeOutObject = employeeObject.timeOutEvents.filter((object)=>{
+        if (object.date === dateStamp){
+            timeOutHour = parseInt(object.hour)  
+        }
+    })
+    let totalHoursWorked = (timeOutHour - timeInHour)/100
 
+    return totalHoursWorked
+// console.log(timeInHour)
+// console.log(timeOutHour)
+// console.log(totalHoursWorked)
+}
+
+function wagesEarnedOnDate(employeeObject, dateStamp) {
+    
+    let hours = hoursWorkedOnDate(employeeObject, dateStamp)
+
+    let pay = employeeObject.payPerHour
+
+    return (pay * hours)
 }
