@@ -1,12 +1,8 @@
 // Your code here
-const employees = []
+// const employees = []
 
 function createEmployeeRecord(array){
-    // const date = new Date().toLocaleDateString('en-CA')
-    // const today = new Date()
-    // let time = today.getHours()
-    // time = (time +"00")
-    // // `${date} ${time}`
+   
     
     const employee = {
     firstName:  array[0],
@@ -16,7 +12,7 @@ function createEmployeeRecord(array){
     timeInEvents: [],
     timeOutEvents: []
     }
-employees.push(employee)
+// employees.push(employee)
 return employee
 }
 
@@ -28,10 +24,45 @@ return arrayOfArrays.map( employeeArray => createEmployeeRecord(employeeArray))
 function createTimeInEvent(employeeObject, dateStamp) {
     
     let stamp = dateStamp.split(" ")
+    let stampTime = stamp[1] 
 
-    employeeObject.timeInEvents = {
+    employeeObject.timeInEvents.push({
         type: "TimeIn",
-        hour: `${stamp[1]}`, 
+        hour: parseInt(stampTime, 10), 
         date: `${stamp[0]}`
-    }
+    })
+return employeeObject
+}
+
+function createTimeOutEvent(employeeObject, dateStamp) {
+    
+    let stamp = dateStamp.split(" ")
+    let stampTime = stamp[1] 
+
+    employeeObject.timeOutEvents.push({
+        type: "TimeOut",
+        hour: parseInt(stampTime, 10), 
+        date: `${stamp[0]}`
+    })
+return employeeObject
+}
+
+function hoursWorkedOnDate(employeeObject, dateStamp) {
+    
+    let timeInObject = employeeObject.timeInEvents.filter((array)=>{array.filter((object)=> console.log(object))
+    })
+       
+        // if (object.date === dateStamp){   
+        //     return object.hour
+        // }
+  
+
+console.log(timeInObject)
+//    let timeOutHour = employeeObject.timeInEvents.filter((object)=>{
+//        if (object.date === dateStamp){
+           
+//         return object.hour
+//        }
+//     })
+
 }
