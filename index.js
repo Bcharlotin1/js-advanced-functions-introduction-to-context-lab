@@ -49,7 +49,7 @@ return employeeObject
 
 function hoursWorkedOnDate(employeeObject, dateStamp) {
     
-    let timeInObject = employeeObject.timeInEvents.filter((array)=>{array.filter((object)=> console.log(object))
+    let timeInObject = employeeObject.timeInEvents.filter((array)=>{array.map((object)=> console.log(object))
     })
        
         // if (object.date === dateStamp){   
